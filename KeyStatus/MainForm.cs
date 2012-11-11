@@ -43,6 +43,9 @@ namespace KeyStatus
                     break;
 
                 case Keys.Alt:
+                case Keys.Menu:
+                case Keys.LMenu:
+                case Keys.RMenu:
                     AltPressed = true;
                     UpdateScreen();
                     break;
@@ -82,6 +85,9 @@ namespace KeyStatus
                     break;
 
                 case Keys.Alt:
+                case Keys.Menu:
+                case Keys.LMenu:
+                case Keys.RMenu:
                     AltPressed = false;
                     UpdateScreen();
                     break;
