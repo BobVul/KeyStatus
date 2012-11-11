@@ -193,6 +193,8 @@ namespace KeyStatus
         }
 
         #region Draggable Window
+        // Thanks Joey @ http://stackoverflow.com/a/1592899/1030702
+        // Thanks FreewareFire @ http://www.codeproject.com/Articles/11114/Move-window-form-without-Titlebar-in-C
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {    
             if (e.Button == MouseButtons.Left)
