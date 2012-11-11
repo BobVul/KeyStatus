@@ -38,30 +38,42 @@ namespace KeyStatus
                 case Keys.ControlKey:
                 case Keys.LControlKey:
                 case Keys.RControlKey:
-                    CtrlPressed = true;
-                    UpdateScreen();
+                    if (CtrlPressed == false)
+                    {
+                        CtrlPressed = true;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.Alt:
                 case Keys.Menu:
                 case Keys.LMenu:
                 case Keys.RMenu:
-                    AltPressed = true;
-                    UpdateScreen();
+                    if (AltPressed == false)
+                    {
+                        AltPressed = true;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.LWin:
                 case Keys.RWin:
-                    WinPressed = true;
-                    UpdateScreen();
+                    if (WinPressed == false)
+                    {
+                        WinPressed = true;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.Shift:
                 case Keys.ShiftKey:
                 case Keys.LShiftKey:
                 case Keys.RShiftKey:
-                    ShiftPressed = true;
-                    UpdateScreen();
+                    if (ShiftPressed == false)
+                    {
+                        ShiftPressed = true;
+                        UpdateScreen();
+                    }
                     break;
             }
         }
@@ -80,30 +92,42 @@ namespace KeyStatus
                 case Keys.ControlKey:
                 case Keys.LControlKey:
                 case Keys.RControlKey:
-                    CtrlPressed = false;
-                    UpdateScreen();
+                    if (CtrlPressed == true)
+                    {
+                        CtrlPressed = false;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.Alt:
                 case Keys.Menu:
                 case Keys.LMenu:
                 case Keys.RMenu:
-                    AltPressed = false;
-                    UpdateScreen();
+                    if (AltPressed == true)
+                    {
+                        AltPressed = false;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.LWin:
                 case Keys.RWin:
-                    WinPressed = false;
-                    UpdateScreen();
+                    if (WinPressed == true)
+                    {
+                        WinPressed = false;
+                        UpdateScreen();
+                    }
                     break;
 
                 case Keys.Shift:
                 case Keys.ShiftKey:
                 case Keys.LShiftKey:
                 case Keys.RShiftKey:
-                    ShiftPressed = false;
-                    UpdateScreen();
+                    if (ShiftPressed == true)
+                    {
+                        ShiftPressed = false;
+                        UpdateScreen();
+                    }
                     break;
             }
         }

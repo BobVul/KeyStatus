@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StatusPanel = new System.Windows.Forms.Panel();
+            this.StatusPanel = new KeyStatus.DoubleBufferedPanel();
             this.CloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel StatusPanel;
+        private KeyStatus.DoubleBufferedPanel StatusPanel;
         private System.Windows.Forms.Button CloseButton;
     }
 }
