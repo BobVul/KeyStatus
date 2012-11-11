@@ -24,14 +24,16 @@ namespace KeyStatus
             InitializeComponent();
         }
 
-        public void LLKeyDown(Keys key)
+        public void LLKeyDown(object sender, KeyEventArgs e)
         {
             if (this.InvokeRequired)
             {
-                this.BeginInvoke((Action<Keys>)(k => LLKeyDown(k)), new object[] { key });
+                this.BeginInvoke((Action<KeyEventArgs>)(k => LLKeyDown(sender, k)), new object[] { e });
                 return;
             }
 
+            Keys key = e.KeyData;
+            
             switch (key)
             {
                 case Keys.Control:
@@ -78,13 +80,15 @@ namespace KeyStatus
             }
         }
 
-        public void LLKeyUp(Keys key)
+        public void LLKeyUp(object sender, KeyEventArgs e)
         {
             if (this.InvokeRequired)
             {
-                this.BeginInvoke((Action<Keys>)(k => LLKeyUp(k)), new object[] { key });
+                this.BeginInvoke((Action<KeyEventArgs>)(k => LLKeyUp(sender, k)), new object[] { e });
                 return;
             }
+
+            Keys key = e.KeyData;
 
             switch (key)
             {
@@ -134,7 +138,9 @@ namespace KeyStatus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            KeyboardHook.CreateHook((InterceptKeys.KeyPressHandler)LLKeyDown, (InterceptKeys.KeyPressHandler)LLKeyUp);
+            KeyboardHook.KeyDown += LLKeyDown;
+            KeyboardHook.KeyUp += LLKeyUp;
+            KeyboardHook.CreateHook();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

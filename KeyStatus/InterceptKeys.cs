@@ -22,10 +22,8 @@ namespace KeyStatus
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
 
-        public delegate void KeyPressHandler(Keys key);
-
-        private KeyPressHandler KeyDown;
-        private KeyPressHandler KeyUp;
+        public event KeyEventHandler KeyDown;
+        public event KeyEventHandler KeyUp;
 
         ~InterceptKeys()
         {
@@ -37,11 +35,9 @@ namespace KeyStatus
             DestroyHook();
         }
 
-        public void CreateHook(KeyPressHandler KeyDown, KeyPressHandler KeyUp)
+        public void CreateHook()
         {
             this.DestroyHook();
-            this.KeyDown = KeyDown;
-            this.KeyUp = KeyUp;
             _proc = HookCallback;
             _hookID = SetHook(_proc);
         }
@@ -76,12 +72,12 @@ namespace KeyStatus
                 if (wParam == (IntPtr)WM_KEYDOWN || wParam == (IntPtr)WM_SYSKEYDOWN)
                 {
                     int vkCode = Marshal.ReadInt32(lParam);
-                    KeyDown((Keys)vkCode);
+                    KeyDown(this, new KeyEventArgs((Keys)vkCode));
                 }
                 else if (wParam == (IntPtr)WM_KEYUP || wParam == (IntPtr)WM_SYSKEYUP)
                 {
                     int vkCode = Marshal.ReadInt32(lParam);
-                    KeyUp((Keys)vkCode);
+                    KeyUp(this, new KeyEventArgs((Keys)vkCode));
                 }
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
