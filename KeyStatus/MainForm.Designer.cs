@@ -39,6 +39,7 @@
             this.StatusPanel.Size = new System.Drawing.Size(300, 50);
             this.StatusPanel.TabIndex = 0;
             this.StatusPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.StatusPanel_Paint);
+            this.StatusPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             // 
             // CloseButton
             // 
