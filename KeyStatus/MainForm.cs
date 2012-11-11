@@ -162,7 +162,7 @@ namespace KeyStatus
             this.Close();
         }
 
-        // Draggable window
+        #region Draggable Window
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {    
             if (e.Button == MouseButtons.Left)
@@ -179,6 +179,6 @@ namespace KeyStatus
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        // /draggable window
+        #endregion
     }
 }
